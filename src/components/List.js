@@ -2,6 +2,8 @@ import React from 'react';
 import './List.css';
 import Card from './Card';
 
+
+
 function List (props) {
     return (
         <section className="List">
@@ -14,11 +16,14 @@ function List (props) {
                         key={card.id}
                         title={card.title}
                         content={card.content}
+                        id={card.id}
+                        onClickDelete = {props.onClickDelete}
                     />
                     )}
                 <button 
                     type="button"
                     className='List-add-button'
+                    onClick={() => props.onClickAdd(props.id)}
                 >
                     +Add Random Card
                 </button>
@@ -26,5 +31,9 @@ function List (props) {
         </section>
     );
 };
+
+List.defaultProps = {
+    onClickAdd: () => {},
+}
 
 export default List;
